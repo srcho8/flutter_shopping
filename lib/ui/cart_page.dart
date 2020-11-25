@@ -68,7 +68,7 @@ class _CartTotal extends StatelessWidget {
           children: [
             Consumer<CartModel>(
                 builder: (context, cart, child) =>
-                    Text('\$${cart.totalPrice}', style: hugeStyle)),
+                    Text('${cart.totalPrice}만원', style: hugeStyle)),
             SizedBox(width: 24),
             FlatButton(
               onPressed: () {
