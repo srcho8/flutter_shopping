@@ -77,7 +77,7 @@ class _MyListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var item = context.select<CatalogModel, Item>(
       // 장바구니에 담을 아이템만 다시 선택
-      (catalog) => catalog.getByPosition(index == 0 ? 0 : index - 1),
+      (catalog) => catalog.getByPosition(index),
     );
     var textTheme = Theme.of(context).textTheme.headline6;
 
