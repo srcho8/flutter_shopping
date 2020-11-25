@@ -18,8 +18,7 @@ class CartModel extends ChangeNotifier {
 
   // 가격 합하기
   // reduce, fold
-  int get totalPrice =>
-      items.fold(0, (prev, next) => prev + next.price);
+  int get totalPrice => items.fold(0, (prev, next) => prev + next.price);
 
   // 아이템 추가
   void add(Item item) {

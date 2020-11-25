@@ -14,7 +14,8 @@ class Catalog_Page extends StatelessWidget {
           SliverToBoxAdapter(child: SizedBox(height: 12)),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                    (context, index) => _MyListItem(index)),
+                (context, index) => _MyListItem(index),
+                childCount: 14),
           ),
         ],
       ),
@@ -25,21 +26,21 @@ class Catalog_Page extends StatelessWidget {
 class _AddButton extends StatelessWidget {
   final Item item;
 
-  const _AddButton({Key key, @required this.item}) : super(key: key);
+  _AddButton({Key key, @required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var isInCart = context.select<CartModel, bool>(
-          (cart) => cart.items.contains(item),
+      (cart) => cart.items.contains(item),
     );
 
     return FlatButton(
       onPressed: isInCart
           ? null
           : () {
-        var cart = context.read<CartModel>();
-        cart.add(item);
-      },
+              var cart = context.read<CartModel>();
+              cart.add(item);
+            },
       splashColor: Theme.of(context).primaryColor,
       child: isInCart ? Icon(Icons.check, semanticLabel: 'ADDED') : Text('담기'),
     );
@@ -76,7 +77,7 @@ class _MyListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var item = context.select<CatalogModel, Item>(
       // 장바구니에 담을 아이템만 다시 선택
-          (catalog) => catalog.getByPosition(index),
+      (catalog) => catalog.getByPosition(index == 0 ? 0 : index - 1),
     );
     var textTheme = Theme.of(context).textTheme.headline6;
 
@@ -88,8 +89,13 @@ class _MyListItem extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: 1,
-              child: Container(
-                color: item.color,
+              child: Center(
+                child: Container(
+                    color: item.color,
+                    child: Text(
+                      '${item.price}만원',
+                      style: TextStyle(color: Colors.white),
+                    )),
               ),
             ),
             SizedBox(width: 24),
