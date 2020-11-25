@@ -33,7 +33,7 @@ class Item {
   final int id;
   final String name;
   final Color color;
-  final int price = 30;
+  int price = 10 + Random().nextInt(40);
 
   Item(this.id, this.name)
       : color = Colors.primaries[id % Colors.primaries.length];

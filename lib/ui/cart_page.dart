@@ -20,7 +20,7 @@ class Cart_Page extends StatelessWidget {
                 child: _CartList(),
               ),
             ),
-            Divider(height: 4, color: Colors.black),
+            Divider(height: 3, color: Colors.black),
             _CartTotal()
           ],
         ),

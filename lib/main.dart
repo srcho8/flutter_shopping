@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider(create: (context) => CatalogModel()),
         // 시간이 지남에 따라 변하는 변수를 객체에 전달하려면 proxyProvider
-        // ChangeNotifier 가 두개라면 이렇게 묶어서 써야하는구나...
         ChangeNotifierProxyProvider<CatalogModel, CartModel>(
           create: (context) => CartModel(),
           update: (context, catalog, cart) {

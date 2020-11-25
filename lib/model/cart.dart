@@ -17,6 +17,7 @@ class CartModel extends ChangeNotifier {
   List<Item> get items => _itemIds.map((id) => _catalog.getById(id)).toList();
 
   // 가격 합하기
+  // reduce, fold
   int get totalPrice =>
       items.fold(0, (prev, next) => prev + next.price);
 
